@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 아래는 개발자가 추가한 app목록
+    'board_main',
 ]
 
 MIDDLEWARE = [
