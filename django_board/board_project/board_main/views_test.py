@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 
@@ -36,10 +36,44 @@ def test_json_data(request):
 # 1. 쿼리파라미터 방식 : localhost:8000/author?id=10&name=hongildong
 # 2. pathvariable 방식(좀 더 rest api 규격에 맞는 방식, 좀 더 현대적인 방식) : localhost:8000/author/10
 def test_html_parameter_data(request):
-    id = request.GET.get('id')
     name = request.GET.get('name')
-    print(id)
-    print(name)
+    email = request.GET.get('email')
+    password = request.GET.get('password')
+    data = {
+        'name' : name,
+        'email' : email,
+        'password' : password
+    }
+    return render(request, "test/test.html", {"data": data})
+
+    # name, email, password를 받아서 화면에 dict형태로 던져주고
+    # 화면에는 이름은 xxx, 
+    # 이메일은 xxx
+    # password는 xxx
+    # url 손댈 필요는 없고,
+
+# 2. pathvariable 방식
+# (좀 더 rest api 규격에 맞는 방식, 좀 더 현대적인 방식) : localhost:8000/author/10
+def test_html_parameter_data2(request, my_id):
+    print(my_id)
     return render(request, "test/test.html", {})
 
+# form 태그를 활용한 post 방식
+# 먼저, 화면을 rendering 해주는 method
+# def test_post_form():
+#     return render(request, "test/test_post_form.html") #+ url매핑(test_post)
+
+def test_post_handle(request):
+    if request.method == 'post':
+        name = request.POST['my_name']
+        email = request.POST['my_email']
+        password = request.POST['my_password']
+        print(name)
+        print(email)
+        print(password)
+        return redirect('/') # localhost:8000/
+    # return HttpResponse("ok")
+    else:
+        return render(request, "test/test_post_form.html")
+    
 
