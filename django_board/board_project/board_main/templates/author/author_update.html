@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block content%}
+<form method="POST">
+    {% csrf_token %}
+    이름 : <input type="text" name="my_name" value='{{authors.name}}'><br>
+    eamil : <input type="text" name="my_email" value='{{authors.email}}'><br>
+    password : <input type="text" name="my_password" value='{{authors.password}}'><br>
+    <input type="submit" value="수정하기">
+</form>
+{% endblock %}
+
+
+<!-- handle -->

@@ -95,4 +95,37 @@ def test_select_all(request):
     #     print(a.password)
     return render(request, 'test/test_select_all.html', {'datas':tests})
 
- # where 조건으로 다건을 조회할땐 filter()함수 사용   
+# where 조건으로 다건을 조회할땐 filter()함수 사용   
+# Test.objects.fliter(name = my_name) -> 다건 가정
+# localhost:8000/test_select_filter?name=hong
+def test_select_filter(request):
+    my_name = request.GET.get('name')
+    tests = Test.objects.filter(name = my_name)
+    return render(request, 'test/test_select_filter.html', {'datas':tests})
+
+# update를 하기 위해서는 해당건을 사전에 조회하기 위한 id값이 필요
+# 매서드는 등록과 동일하게 save()함수 사용
+# save함수는 신구객체를 sava하면 insert, 기존객체를 save하면 update
+def test_update(request):
+    if request.method == 'POST':
+        my_id = request.POST['my_id']
+        t1 = Test.objects.get(id=my_id)
+        my_name = request.POST['my_name']
+        my_email = request.POST['my_email']
+        my_password = request.POST['my_password']
+        t1.name = my_name
+        t1.email = my_email
+        t1.password = my_password
+        t1.save()
+        return redirect('/') 
+    else:
+        return render(request, "test/test_update.html")
+
+# 삭제는 delete()함수 사용. update와 마찬가지로 기족 객체 조회 후 delete()
+# def test_update(request):
+#     if request.method == 'POST':
+#         my_id = request.POST['my_id']
+#         t1 = Test.objects.get(id=my_id)
+#         t1.delete()
+# 이런식으로 id값 받아서 딜리트 가능
+

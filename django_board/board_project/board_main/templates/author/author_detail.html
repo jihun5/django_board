@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block content%}
+
+<h1>회원상세조회</h1>
+
+<p>이름 : {{authors.name}} </p>
+<p>email : {{authors.email}} </p>
+<p>password : {{authors.password}} </p>
+<span>가입일 : {{authors.created_at}} </span>&nbsp;&nbsp;&nbsp;
+<span>회원정보수정일 : {{authors.updated_at}}</span>
+<div>
+    <a href="/authors/{{authors.id}}/update">회원수정</a>
+</div>
+{% endblock %}
