@@ -4,6 +4,7 @@
 </head>
 <body>
     <form action= "http://localhost:8000/test_post_handle" method="POST">
+        {% csrf_token %}
         이름 : <input type="text" name="my_name">
         <br>
         eamil : <input type="text" name="my_email">
@@ -11,7 +12,7 @@
         password : <input type="text" name="my_password">
         <br>
         <input type="submit" value="회원가입">
-        </form>
+    </form>
 </body>
 </html>
 <!-- handle -->

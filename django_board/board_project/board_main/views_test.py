@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
-
+from .models import Test
 # Create your views here.
 
 # get 요청시 html파일 그대로 return
@@ -64,16 +64,35 @@ def test_html_parameter_data2(request, my_id):
 #     return render(request, "test/test_post_form.html") #+ url매핑(test_post)
 
 def test_post_handle(request):
-    if request.method == 'post':
-        name = request.POST['my_name']
-        email = request.POST['my_email']
-        password = request.POST['my_password']
-        print(name)
-        print(email)
-        print(password)
+    if request.method == 'POST':
+        my_name = request.POST['my_name']
+        my_email = request.POST['my_email']
+        my_password = request.POST['my_password']
+        # DB에 INSERT -> SAVE함수
+        # DB에 테이블과 SYNC가 맞는 test 클래스에서 객체를 만들어 save
+        t1 = Test()
+        t1.name = my_name
+        t1.email = my_email
+        t1.password = my_password
+        t1.save()
         return redirect('/') # localhost:8000/
     # return HttpResponse("ok")
     else:
         return render(request, "test/test_post_form.html")
     
 
+def test_select_one(request, my_id):
+    # 단건만을 조회할 땐 get함수 
+    t1 = Test.objects.get(id=my_id)
+    return render(request, 'test/test_select_one.html', {'data':t1})
+
+def test_select_all(request):
+    # 모든 data조회 : select * from xxxx; all()함수 사용 
+    tests = Test.objects.all()
+    # for a in tests:
+    #     print(a.name)
+    #     print(a.email)
+    #     print(a.password)
+    return render(request, 'test/test_select_all.html', {'datas':tests})
+
+ # where 조건으로 다건을 조회할땐 filter()함수 사용   
