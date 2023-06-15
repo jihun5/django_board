@@ -1,15 +1,23 @@
 {% extends 'home.html' %}
 
 {% block content%}
-
-<h1>회원상세조회</h1>
-
-<p>이름 : {{authors.name}} </p>
-<p>email : {{authors.email}} </p>
-<p>password : {{authors.password}} </p>
-<span>가입일 : {{authors.created_at}} </span>&nbsp;&nbsp;&nbsp;
-<span>회원정보수정일 : {{authors.updated_at}}</span>
-<div>
-    <a href="/authors/{{authors.id}}/update">회원수정</a>
+<div class="row">
+    <div>
+        <h1>회원상세조회</h1>
+        <p><b>이름</b> : {{authors.name}} </p>
+        <p><b>email</b> : {{authors.email}} </p>
+        <p><b>password</b> : {{authors.password}} </p>
+        <p><b>작성글수</b> : {{authors.posts.count}} </p>
+        <!-- 작성글 수 목록을 보고 싶으면 for로 꺼내서 확인하면 된다 -->
+        <hr>
+        <div>
+            <span><b>가입일</b> : {{authors.created_at}} </span>&nbsp;&nbsp;&nbsp;
+            <span><b>회원정보수정일</b> : {{authors.updated_at}}</span>
+        </div>
+    </div>
+    <div>
+        <a href="/authors/{{authors.id}}/update" class="btn btn-primary">회원수정</a>
+        <a href="/authors" class="btn btn-secondary">회원목록</a>
+    </div>
 </div>
 {% endblock %}
