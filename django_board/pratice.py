@@ -290,6 +290,155 @@
 #     answer.append(temp.index(a)+1)
 # print(answer)    
 
-arr1 = [[1,2],[2,3]]
-arr2 = [[3,4],[5,6]]
-print()
+# arr1 = [[1,2],[2,3]]
+# arr2 = [[3,4],[5,6]]
+# # result = [[4,6],[7,9]]
+# # answer = arr1[0][0]+arr2[0][0]
+# # A = arr1[0]
+# # B = arr1[1]
+# # print(arr1+arr2)
+# num = []
+# for a in range(len(arr1)): # a = 0, 1
+#     num.append(arr1[0][a]+arr2[0][a])
+# print(num)
+# for a in range(len(arr1)):
+#     num.append(arr1[1][a]+arr2[1][a])
+# print(num)
+
+# arr1 = [[1,2],[2,3]]
+# arr2 = [[3,4],[5,6]]
+# answer = []
+# for a in range(len(arr1)):  # a = 0, 1
+#     temp = []
+#     for b in range(len(arr1[a])): # b = 0, 1    
+#         temp.append(arr1[a][b]+arr2[a][b])
+#     answer.append(temp)
+# print(answer)
+
+# lista = ['A',"A","B","O","O","AB","AB"]
+# dicta = {}
+# for a in lista:
+#     if a not in dicta.keys():
+#         dicta[a] = lista.count(a)
+# print(dicta)
+
+# sum = 0
+# a = 0
+# while a<100:
+#     a += 1
+#     if a%2 != 0:
+#         sum += a
+# print(sum)
+
+# sum = 0
+# a = 0
+# while a< 100:
+#     a += 1
+#     if a%2 ==0:
+#         sum += a
+# print(sum)
+
+# for b in range(1, 10):
+#     for a in range(1, 10):
+#        print(f"{b} x {a} = {b*a}")
+
+# # 이중 for문 사용하여 구구단 출력하기
+# for a in range(1, 10):
+#     for b in range(1, 10):
+#         print(f"{a} X {b} = {a*b}")
+
+# temp = []
+# lista = [93,45,21,30,20,94,66,71,45]
+# for a in range(len(lista)-1): # 자릿수를 정헤야 하고 -1하는 이유는 마지막 숫자는 비교할 필요가 없기때문에
+#     for b in range(a+1, len(lista)): #a+1은 자기자신과의 비교를 피하기 위해, 
+#                                         #범위를 a번째로 설정해야 하나씩 줄여나갈 수 있다.
+#         if lista[a] > lista[b]:
+#             temp = lista[a]
+#             lista[a] = lista[b]
+#             lista[b] = temp
+# print(lista)    
+
+# add = lambda x,y : x+y
+# print(add(1,2))
+# mul = lambda x,y : x*y
+# print(mul(2,3))
+# minus = lambda x, y : x-y
+# print(abs(minus(1,3)))
+
+# def oddTest(x):
+#     if x %2 ==0:
+#         return True
+#     else :
+#         return False
+# print(oddTest(2))
+# oddornot = lambda x : True if x%2 ==0 else False
+# print(oddornot(3))
+
+# lista = [10,20,30,40,50]
+# def recur(lista, total_list, temp_list, n, m):
+#     if m == 0:
+#         total_list.append(temp_list[:])
+#         return
+#     for a in range(n, len(lista)):
+#         temp_list.append(lista[a])
+#         recur(lista,total_list,temp_list,a+1, m-1)
+#         temp_list.pop()
+# input1 = [10,20,30,40,50]
+# total_list = []
+# input2 = 3
+# recur(input1, total_list, [], 0, input2)
+# print(total_list)
+
+# import math
+# lista = [1.1, 2.2, 3.3]
+# # A = list(map(int, lista))
+# # print(A)
+# # B = list(map(str, lista))
+# # print(B)
+# A = lambda x : x**2
+# print(A(5))
+
+# a = 12345
+# A = list(map(int,str(a).split()))
+# print(A)
+# lista = []
+# for a in A:
+#     lista.append(str(a))
+# print(lista)
+
+# for a in range(1,10):
+#     for i in range(1, a+1):
+#         print('*', end="")
+
+# class Person:
+#     def __init__(self, name, age, gender, email):
+#         self.name = name
+#         self.age = age
+#         self.gender = gender
+#         self.email = email
+#     def register(self):
+#         self.myinfo = self.name + " " + self.age + " "+ self.gender + " " + self.email
+# p1 = Person("홍길동", "19", "남","hong@naver.com")
+# p1.register()
+# print(p1.myinfo)
+
+# while True:
+#     first = int(input("분자를 입력해주세요"))
+#     second = int(input("분모를 입력해주세요"))
+#     try:
+#         first = int(input("분자를 입력해주세요"))
+#         second = int(input("분모를 입력해주세요"))
+#         first/second
+#     except Exception:
+#         print("오류입니다")    
+
+# class Bird:
+#     def fly(self):
+#         raise Exception
+# class Eagle(Bird):
+#     def fly(self):
+#         print("fly fly")
+#     pass
+# eagle1 = Eagle()
+# eagle1.fly()
+
